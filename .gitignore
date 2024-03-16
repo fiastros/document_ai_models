@@ -1,0 +1,14 @@
+# Ignoring folders
+.venv/
+.idea/
+notebook/.ipynb_checkpoints/
+
+# Ignore files
+data/input_invoice/*
+data/output_invoice/*
+models/*
+
+# keep exception files
+!data/input_invoice/.gitkeep
+!data/output_invoice/.gitkeep
+!models/.gitkeep

@@ -1,0 +1,65 @@
+CONFIG:
+  D2LAYOUT: xrf_dd/layout/CASCADE_RCNN_R_50_FPN_GN.yaml
+  D2CELL: xrf_dd/cell/CASCADE_RCNN_R_50_FPN_GN.yaml
+  D2ITEM: xrf_dd/item/CASCADE_RCNN_R_50_FPN_GN.yaml
+WEIGHTS:
+  D2LAYOUT: xrf_layout/model_final_inf_only.pt
+  D2CELL: xrf_cell/model_final_inf_only.pt
+  D2ITEM: xrf_item/model_final_inf_only.pt
+LAYOUT_NMS_PAIRS:
+  COMBINATIONS:
+    - - text
+      - table
+    - - title
+      - table
+    - - text
+      - list
+    - - title
+      - list
+    - - text
+      - title
+    - - list
+      - table
+  THRESHOLDS:
+    - 0.005
+    - 0.005
+    - 0.542
+    - 0.1
+    - 0.699
+    - 0.01
+SEGMENTATION:
+  ASSIGNMENT_RULE: ioa
+  THRESHOLD_ROWS: 0.9
+  THRESHOLD_COLS: 0.9
+  FULL_TABLE_TILING: True
+  REMOVE_IOU_THRESHOLD_ROWS: 0.5
+  REMOVE_IOU_THRESHOLD_COLS: 0.5
+  STRETCH_RULE: equal
+  USE_REFINEMENT: False
+WORD_MATCHING:
+  PARENTAL_CATEGORIES:
+    - text
+    - title
+    - list
+    - figure
+    - cell
+  CHILD_CATEGORIES:
+    - word
+  RULE: ioa
+  THRESHOLD: 0.4
+  MAX_PARENT_ONLY: True
+TEXT_ORDERING:
+  TEXT_CONTAINER: word
+  FLOATING_TEXT_BLOCK:
+    - title
+    - text
+    - list
+    - figure
+  TEXT_BLOCK:
+    - title
+    - text
+    - list
+    - cell
+    - figure
+  TEXT_CONTAINER_TO_TEXT_BLOCK: True
+DEVICE: cpu
